@@ -48,10 +48,10 @@ router.post('/sign-up', async function (req, res, next) {
     res.json({ result })
   } else {
     var newUser = new userModel({
-      prenom: req.body.firstnameFromFront !=='',
-      nom: req.body.lastnameFromFront !=='',
-      email: req.body.emailFromFront !=='',
-      mdp: req.body.passwordFromFront !==''
+      prenom: req.body.firstnameFromFront ,
+      nom: req.body.lastnameFromFront ,
+      email: req.body.emailFromFront ,
+      mdp: req.body.passwordFromFront
     })
     
     const saveUser = await newUser.save()
