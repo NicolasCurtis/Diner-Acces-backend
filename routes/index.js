@@ -16,13 +16,13 @@ router.post('/sign-in', async function (req, res, next) {
   //   error.push('champs vides')
   // }
 
-  
-    const users = await userModel.findOne({
-      email: req.body.emailFromFront,
-      mdp: req.body.passwordFromFront
-    })
 
-    
+  const users = await userModel.findOne({
+    email: req.body.emailFromFront,
+    mdp: req.body.passwordFromFront
+  })
+
+
   //   if (user) {
   //     result = true
   //   } else {
@@ -43,34 +43,40 @@ router.post('/sign-in', async function (req, res, next) {
 
 router.post('/sign-up', async function (req, res, next) {
   var result = false;
-  var userFind = await userModel.findOne({ email: req.body.emailFromFront })
+  var error = null;
+  var saveUser = null;
+
+  if (req.body.firstnameFromFront == ''
+    || req.body.lastnameFromFront == ''
+    || req.body.emailFromFront == ''
+    || req.body.passwordFromFront == '') {
+    error = 'champs vide'
+  };
+
+  var userFind = await userModel.findOne({ email: req.body.emailFromFront });
+
   if (userFind) {
     res.json({ result })
   } else {
-    var newUser = new userModel({
-      prenom: req.body.firstnameFromFront ,
-      nom: req.body.lastnameFromFront ,
-      email: req.body.emailFromFront ,
-      mdp: req.body.passwordFromFront
-    })
-    
-    const saveUser = await newUser.save()
-      
-    // if (saveUser) {
-    //   req.body.firstnameFromFront == ''
-    //   req.body.lastnameFromFront == ''
-    //   req.body.emailFromFront == ''
-    //   req.body.passwordFromFront == ''
-      
-    if(saveUser){
-      result = true
+    if (error == null){
+      var newUser = new userModel({
+        prenom: req.body.firstnameFromFront,
+        nom: req.body.lastnameFromFront,
+        email: req.body.emailFromFront,
+        mdp: req.body.passwordFromFront
+      })
+  
+      saveUser = await newUser.save();
+  
+      if (saveUser) {
+        result = true
+      }
     }
-
-
-
-    res.json({ result, saveUser })
+    
 
   }
+
+  res.json({ result, saveUser, error: error })
 
 })
 
