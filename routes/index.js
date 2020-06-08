@@ -16,15 +16,6 @@ router.post('/sign-in', async function (req, res, next) {
   //   error.push('champs vides')
   // }
 
-<<<<<<< HEAD
-  
-    const users = await userModel.findOne({
-      email: req.body.emailFromFront,
-      mdp: req.body.passwordFromFront
-    })
-
-    
-=======
 
   const users = await userModel.findOne({
     email: req.body.emailFromFront,
@@ -32,7 +23,6 @@ router.post('/sign-in', async function (req, res, next) {
   })
 
 
->>>>>>> bb7f00379cc644b61ddc3b0675880be251d2f566
   //   if (user) {
   //     result = true
   //   } else {
@@ -45,16 +35,10 @@ router.post('/sign-in', async function (req, res, next) {
 
 
   res.json({ result, users })
-<<<<<<< HEAD
-
-
-})
-=======
 
 
 })
 
->>>>>>> bb7f00379cc644b61ddc3b0675880be251d2f566
 
 
 router.post('/sign-up', async function (req, res, next) {
@@ -69,38 +53,6 @@ router.post('/sign-up', async function (req, res, next) {
     error = 'champs vide'
   };
 
-<<<<<<< HEAD
-router.post('/sign-up', async function (req, res, next) {
-  var result = false;
-  var userFind = await userModel.findOne({ email: req.body.emailFromFront })
-  if (userFind) {
-    res.json({ result })
-  } else {
-    var newUser = new userModel({
-      prenom: req.body.firstnameFromFront ,
-      nom: req.body.lastnameFromFront ,
-      email: req.body.emailFromFront ,
-      mdp: req.body.passwordFromFront
-    })
-    
-    const saveUser = await newUser.save()
-      
-    // if (saveUser) {
-    //   req.body.firstnameFromFront == ''
-    //   req.body.lastnameFromFront == ''
-    //   req.body.emailFromFront == ''
-    //   req.body.passwordFromFront == ''
-      
-    if(saveUser){
-      result = true
-    }
-
-
-
-    res.json({ result, saveUser })
-
-  }
-=======
   var userFind = await userModel.findOne({ email: req.body.emailFromFront });
 
   if (userFind) {
@@ -125,7 +77,6 @@ router.post('/sign-up', async function (req, res, next) {
   }
 
   res.json({ result, saveUser, error: error })
->>>>>>> bb7f00379cc644b61ddc3b0675880be251d2f566
 
 })
 
@@ -155,8 +106,4 @@ router.get('/restolist', async function (req, res, next) {
     res.json({ result: false })
   }
 });
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> bb7f00379cc644b61ddc3b0675880be251d2f566
