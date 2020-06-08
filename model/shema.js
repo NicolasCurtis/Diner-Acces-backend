@@ -8,4 +8,7 @@ var restoSchema = mongoose.Schema({
 
 var restoModel = mongoose.model('restaurant', restoSchema)
 
+
+
+
 module.exports = restoModel;
