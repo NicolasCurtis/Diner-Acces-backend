@@ -10,25 +10,11 @@ router.post('/sign-in', async function (req, res, next) {
   var result = false
   var user = null
 
-  // if (req.body.emailFromFront == ''
-  //   || req.body.passwordFromFront == ''
-  // ) {
-  //   error.push('champs vides')
-  // }
-
 
   const users = await userModel.findOne({
     email: req.body.emailFromFront,
     mdp: req.body.passwordFromFront
   })
-
-
-  //   if (user) {
-  //     result = true
-  //   } else {
-  //     error.push('email ou mot de passe incorrect')
-  //   }
-  // }
   if (users) {
     result = true
   }
