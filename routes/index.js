@@ -80,7 +80,7 @@ router.post('/mapScreens', async function (req, res, next) {
   } else {
     res.json({ result: false })
   }
-  //  var resto = await restoModel.find();
+ 
 });
 
 router.get('/restolist', async function (req, res, next) {
