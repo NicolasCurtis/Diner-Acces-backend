@@ -69,9 +69,9 @@ router.post('/sign-up', async function (req, res, next) {
 
 router.post('/mapScreens', async function (req, res, next) {
   var newResto = new restoModel({
-    restoName: "L'assiette du parc",
-    longitude: 45.7729772,
-    latitude: 4.8383089
+    restoName: "La Place Neuve",
+    longitude: 4.466204,
+    latitude: 45.738881
   });
 
   var resto = await newResto.save();
