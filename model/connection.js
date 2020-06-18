@@ -5,7 +5,7 @@ var options = {
     useNewUrlParser: true,
     useUnifiedTopology : true
   }
-  mongoose.connect('mongodb+srv://allankadous:7gMzzyMYfVgOgmJG@cluster0-ixhqa.mongodb.net/test?retryWrites=true&w=majority', 
+  mongoose.connect(process.env.MONGODB_URL, 
       options,         
       function(err) {
        console.log(err);
